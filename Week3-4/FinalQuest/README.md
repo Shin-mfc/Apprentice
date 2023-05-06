@@ -11,7 +11,7 @@ brew install gnupg
 
 2. ”password_manager.zsh”ファイルをダウンロードしてください。
 
-3. テキストエディタを使って”password_manager.zsh”ファイル内の'gpg_password="your_gpg_password_here"'の部分を、実際の任意のGPG暗号化用パスワードに置き換えてください。
+3. テキストエディタを使って”password_manager.zsh”ファイル内の'gpg_password="your_gpg_password_here"'の部分を、任意のパスワードに置き換えてください。
 
 3. 変更して保存した上記のファイルを任意のフォルダに格納してください。
 
