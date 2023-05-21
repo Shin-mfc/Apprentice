@@ -108,7 +108,21 @@ VALUES (1, 1),
        (6, 1), 
        (6, 2), 
        (7, 1), 
-       (7, 2);
+       (7, 2),
+       (8, 1), 
+       (8, 2),
+       (9, 1), 
+       (9, 2),
+       (10, 1), 
+       (10, 2),
+       (11, 1), 
+       (11, 2),
+       (12, 1), 
+       (12, 2),
+       (13, 1), 
+       (13, 2),
+       (14, 1), 
+       (14, 2);
 
 INSERT INTO episodes (season_id, program_id, episode_number, episode_title, episode_detail, duration, air_date)
 VALUES (1, 1, 1, 'Pokemon S01E01', 'First episode of Pokemon season 1', '00:20:00', '2023-01-01'),
