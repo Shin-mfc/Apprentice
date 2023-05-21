@@ -77,86 +77,125 @@ CREATE TABLE views (
 最後に、各テーブルにサンプルデータを挿入します。以下に各テーブルに挿入するデータのSQLコマンドを書いたので、コピーしてデータを入れてください。
 
 ```sql
--- channels テーブルのデータを挿入
-INSERT INTO channels(channel_name) VALUES
-('Anime'),
-('Drama'),
-('Sports'),
-('Pets'),
-('Movies'),
-('Comedy');
+INSERT INTO channels (channel_name)
+VALUES ('Drama1'), 
+       ('Drama2'), 
+       ('Anime1'), 
+       ('Anime2'), 
+       ('Sports'), 
+       ('Pets');
 
--- programs テーブルのデータを挿入
-INSERT INTO programs(program_title, program_detail) VALUES
-('Pokemon', 'A popular anime about a young Pokemon Trainer and his journey.'),
-('Friends', 'A story about six friends living in New York.'),
-('Game of Thrones', 'A fantasy drama series based on the novels by George R. R. Martin.'),
-('NARUTO', 'A popular anime about a young ninja named Naruto Uzumaki.'),
-('Stranger Things', 'A sci-fi horror series set in the 1980s.'),
-('Breaking Bad', 'A high school chemistry teacher turned methamphetamine manufacturing drug dealer.'),
-('The Simpsons', 'An animated sitcom depicting the life of the Simpson family.');
+INSERT INTO programs (program_title, program_detail, genre)
+VALUES ('Pokemon', 'Adventure of Pokemon trainers', 'Anime'),
+       ('Friends', 'Story of 6 friends in New York', 'Drama'),
+       ('Game of Thrones', 'A political drama in a fantasy setting', 'Drama'),
+       ('NARUTO', 'Adventure of a ninja named Naruto', 'Anime'),
+       ('Stranger Things', 'Mysterious events in a small town', 'Drama'),
+       ('Breaking Bad', 'A high school chemistry teacher turned methamphetamine manufacturing drug dealer', 'Drama'),
+       ('The Simpsons', 'Family life in a fictional American city', 'Anime');
 
--- seasons テーブルのデータを挿入
-INSERT INTO seasons(program_id, season_number) VALUES
-(1, 1),
-(1, 2),
-(2, 1),
-(2, 2),
-(3, 1),
-(3, 2),
-(3, 3),
-(4, 1),
-(4, 2),
-(5, 1),
-(5, 2),
-(6, 1),
-(6, 2),
-(6, 3),
-(7, 1),
-(7, 2),
-(7, 3);
+INSERT INTO seasons (program_id, season_number)
+VALUES (1, 1), 
+       (1, 2), 
+       (2, 1), 
+       (2, 2),
+       (3, 1),
+       (3, 2), 
+       (4, 1), 
+       (4, 2), 
+       (5, 1), 
+       (5, 2), 
+       (6, 1), 
+       (6, 2), 
+       (7, 1), 
+       (7, 2);
 
--- episodes テーブルのデータを挿入
-INSERT INTO episodes(season_id, episode_number, episode_title, episode_detail, duration, air_date, view_count) VALUES
-(1, 1, 'Pokemon - Episode 1', 'The journey starts.', '20m', '2023-01-01 00:00:00', 100),
-(1, 2, 'Pokemon - Episode 2', 'Ash catches his first Pokemon.', '20m', '2023-01-02 00:00:00', 120),
-(2, 1, 'Friends - Episode 1', 'They all meet for the first time.', '30m', '2023-01-01 00:00:00', 200),
-(2, 2, 'Friends - Episode 2', 'Ross learns about his ex-wife.', '30m', '2023-01-02 00:00:00', 210),
-(3, 1, 'Game of Thrones - Episode 1', 'A Game of Thrones.', '50m', '2023-01-01 00:00:00', 300),
-(3, 2, 'Game of Thrones - Episode 2', 'A Clash of Kings.', '50m', '2023-01-02 00:00:00', 350),
-(4, 1, 'NARUTO - Episode 1', 'Naruto becomes a ninja.', '22m', '2023-01-01 00:00:00', 250),
-(4, 2, 'NARUTO - Episode 2', 'Naruto meets his team.', '22m', '2023-01-02 00:00:00', 275),
-(5, 1, 'Stranger Things - Episode 1', 'A boy goes missing.', '50m', '2023-01-01 00:00:00', 310),
-(5, 2, 'Stranger Things - Episode 2', 'A mysterious girl appears.', '50m', '2023-01-02 00:00:00', 325),
-(6, 1, 'Breaking Bad - Episode 1', 'Walter learns about his condition.', '60m', '2023-01-01 00:00:00', 420),
-(6, 2, 'Breaking Bad - Episode 2', 'Walter starts his meth operation.', '60m', '2023-01-02 00:00:00', 450),
-(7, 1, 'The Simpsons - Episode 1', 'The Simpsons get a new pet.', '30m', '2023-01-01 00:00:00', 380),
-(7, 2, 'The Simpsons - Episode 2', 'Bart gets in trouble at school.', '30m', '2023-01-02 00:00:00', 390);
+INSERT INTO episodes (season_id, program_id, episode_number, episode_title, episode_detail, duration, air_date)
+VALUES (1, 1, 1, 'Pokemon S01E01', 'First episode of Pokemon season 1', '00:20:00', '2023-01-01'),
+       (2, 1, 1, 'Pokemon S02E01', 'First episode of Pokemon season 2', '00:20:00', '2023-02-01'),
+       (3, 2, 1, 'Friends S01E01', 'First episode of Friends season 1', '00:30:00', '2023-01-01'),
+       (4, 2, 1, 'Friends S02E01', 'First episode of Friends season 2', '00:30:00', '2023-02-01'),
+       (5, 3, 1, 'Game of Thrones S01E01', 'First episode of Game of Thrones season 1', '01:00:00', '2023-01-01'),
+       (6, 3, 1, 'Game of Thrones S02E01', 'First episode of Game of Thrones season 2', '01:00:00', '2023-02-01'),
+       (7, 4, 1, 'NARUTO S01E01', 'First episode of NARUTO season 1', '00:23:00', '2023-01-01'),
+       (8, 4, 1, 'NARUTO S02E01', 'First episode of NARUTO season 2', '00:23:00', '2023-02-01'),
+       (9, 5, 1, 'Stranger Things S01E01', 'First episode of Stranger Things season 1', '00:50:00', '2023-01-01'),
+       (10, 5, 1, 'Stranger Things S02E01', 'First episode of Stranger Things season 2', '00:50:00', '2023-02-01'),
+       (11, 6, 1, 'Breaking Bad S01E01', 'First episode of Breaking Bad season 1', '00:50:00', '2023-01-01'),
+       (12, 6, 1, 'Breaking Bad S02E01', 'First episode of Breaking Bad season 2', '00:50:00', '2023-02-01'),
+       (13, 7, 1, 'The Simpsons S01E01', 'First episode of The Simpsons season 1', '00:22:00', '2023-01-01'),
+       (14, 7, 1, 'The Simpsons S02E01', 'First episode of The Simpsons season 2', '00:22:00', '2023-02-01'),
+       (15, 1, 1, 'Pokemon S02E02', 'Second episode of Pokemon season 2', '00:21:00', '2023-02-02'),
+       (16, 2, 1, 'Friends S01E02', 'Second episode of Friends season 1', '00:22:00', '2023-01-02'),
+       (17, 2, 1, 'Friends S02E02', 'Second episode of Friends season 2', '00:22:00', '2023-02-02'),
+       (18, 3, 1, 'Game of Thrones S01E02', 'Second episode of Game of Thrones season 1', '00:56:00', '2023-01-02'),
+       (19, 3, 1, 'Game of Thrones S02E02', 'Second episode of Game of Thrones season 2', '00:56:00', '2023-02-02'),
+       (20, 4, 1, 'NARUTO S01E02', 'Second episode of NARUTO season 1', '00:23:00', '2023-01-02'),
+       (21, 4, 1, 'NARUTO S02E02', 'Second episode of NARUTO season 2', '00:23:00', '2023-02-02'),
+       (22, 5, 1, 'Stranger Things S01E02', 'Second episode of Stranger Things season 1', '00:48:00', '2023-01-02'),
+       (23, 5, 1, 'Stranger Things S02E02', 'Second episode of Stranger Things season 2', '00:48:00', '2023-02-02'),
+       (24, 6, 1, 'Breaking Bad S01E02', 'Second episode of Breaking Bad season 1', '00:47:00', '2023-01-02'),
+       (25, 6, 1, 'Breaking Bad S02E02', 'Second episode of Breaking Bad season 2', '00:47:00', '2023-02-02'),
+       (26, 7, 1, 'The Simpsons S01E02', 'Second episode of The Simpsons season 1', '00:23:00', '2023-01-02'),
+       (27, 7, 1, 'The Simpsons S02E02', 'Second episode of The Simpsons season 2', '00:23:00', '2023-02-02');
+       -- And so on for other episodes and programs...
 
--- broadcasts テーブルのデータを挿入
-INSERT INTO broadcasts(channel_id, episode_id, start_time, end_time) VALUES
-(1, 1, '2023-05-18 08:00:00', '2023-05-18 08:20:00'),
-(1, 2, '2023-05-18 09:00:00', '2023-05-18 09:20:00'),
-(2, 3, '2023-05-18 10:00:00', '2023-05-18 10:30:00'),
-(2, 4, '2023-05-18 11:00:00', '2023-05-18 11:30:00'),
-(3, 5, '2023-05-18 12:00:00', '2023-05-18 12:50:00'),
-(3, 6, '2023-05-18 13:00:00', '2023-05-18 13:50:00'),
-(4, 7, '2023-05-18 14:00:00', '2023-05-18 14:22:00'),
-(4, 8, '2023-05-18 15:00:00', '2023-05-18 15:22:00'),
-(5, 9, '2023-05-18 16:00:00', '2023-05-18 16:50:00'),
-(5, 10, '2023-05-18 17:00:00', '2023-05-18 17:50:00'),
-(6, 11, '2023-05-18 18:00:00', '2023-05-18 19:00:00'),
-(6, 12, '2023-05-18 20:00:00', '2023-05-18 21:00:00'),
-(7, 13, '2023-05-18 22:00:00', '2023-05-18 22:30:00'),
-(7, 14, '2023-05-19 23:00:00', '2023-05-19 23:30:00');
+INSERT INTO program_slots (channel_id, episode_id, start_time, end_time)
+VALUES (1, 1, '2023-01-01 20:00:00', '2023-01-01 20:20:00'),
+       (1, 2, '2023-02-01 20:00:00', '2023-02-01 20:20:00'),
+       (2, 3, '2023-01-01 20:30:00', '2023-01-01 21:00:00'),
+       (2, 4, '2023-02-01 20:30:00', '2023-02-01 21:00:00'),
+       (3, 5, '2023-01-01 21:00:00', '2023-01-01 22:00:00'),
+       (3, 6, '2023-02-01 21:00:00', '2023-02-01 22:00:00'),
+       (4, 7, '2023-01-01 20:00:00', '2023-01-01 20:23:00'),
+       (4, 8, '2023-02-01 20:00:00', '2023-02-01 20:23:00'),
+       (5, 9, '2023-01-01 22:00:00', '2023-01-01 22:50:00'),
+       (5, 10, '2023-02-01 22:00:00', '2023-02-01 22:50:00'),
+       (6, 11, '2023-01-01 23:00:00', '2023-01-01 23:50:00'),
+       (6, 12, '2023-02-01 23:00:00', '2023-02-01 23:50:00'),
+       (1, 13, '2023-01-01 21:00:00', '2023-01-01 21:22:00'),
+       (1, 14, '2023-02-01 21:00:00', '2023-02-01 21:22:00'),
+       (2, 15, '2023-02-02 20:30:00', '2023-02-02 20:51:00'),
+       (3, 16, '2023-01-02 21:00:00', '2023-01-02 21:22:00'),
+       (3, 17, '2023-02-02 21:00:00', '2023-02-02 21:22:00'),
+       (4, 18, '2023-01-02 21:00:00', '2023-01-02 21:56:00'),
+       (4, 19, '2023-02-02 21:00:00', '2023-02-02 21:56:00'),
+       (5, 20, '2023-01-02 22:00:00', '2023-01-02 22:23:00'),
+       (5, 21, '2023-02-02 22:00:00', '2023-02-02 22:23:00'),
+       (6, 22, '2023-01-02 23:00:00', '2023-01-02 23:48:00'),
+       (6, 23, '2023-02-02 23:00:00', '2023-02-02 23:48:00'),
+       (1, 24, '2023-01-02 21:00:00', '2023-01-02 21:47:00'),
+       (1, 25, '2023-02-02 21:00:00', '2023-02-02 21:47:00'),
+       (1, 26, '2023-01-02 22:00:00', '2023-01-02 22:23:00'),
+       (1, 27, '2023-02-02 22:00:00', '2023-02-02 22:23:00');
+       -- And so on for other slots and channels...
 
--- program_genres テーブルのデータを挿入
-INSERT INTO program_genres(program_id, genre_id) VALUES
-(1, 1),
-(2, 6),
-(3, 2),
-(4, 1),
-(5, 2),
-(6, 2),
-(7, 6);
+INSERT INTO views (slot_id, views)
+VALUES (1, 1000),
+       (2, 1500),
+       (3, 2000),
+       (4, 1800),
+       (5, 2100),
+       (6, 2700),
+       (7, 3000),
+       (8, 2800),
+       (9, 2400),
+       (10, 2600),
+       (11, 2500),
+       (12, 2700),
+       (13, 2900),
+       (14, 3000),
+       (15, 2200),
+       (16, 2400),
+       (17, 2500),
+       (18, 3000),
+       (19, 2800),
+       (20, 2600),
+       (21, 2400),
+       (22, 2500),
+       (23, 2700),
+       (24, 2900),
+       (25, 3000),
+       (26, 2600),
+       (27, 2700);
 ```
