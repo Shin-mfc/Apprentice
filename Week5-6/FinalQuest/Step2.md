@@ -26,10 +26,10 @@ CREATE TABLE channels (
 
 CREATE TABLE programs (
   program_id INT PRIMARY KEY AUTO_INCREMENT,
-  title VARCHAR(100) NOT NULL,
-  description TEXT,
+  program_title VARCHAR(100) NOT NULL,
+  program_detail TEXT,
   genre VARCHAR(50) NOT NULL,
-  UNIQUE (title)
+  UNIQUE (program_title)
 );
 
 CREATE TABLE seasons (
@@ -45,8 +45,8 @@ CREATE TABLE episodes (
   season_id INT,
   program_id INT NOT NULL,
   episode_number INT,
-  title VARCHAR(100) NOT NULL,
-  description TEXT,
+  episode_title VARCHAR(100) NOT NULL,
+  episode_detail TEXT,
   duration TIME NOT NULL,
   air_date DATE NOT NULL,
   FOREIGN KEY (season_id) REFERENCES seasons(season_id),
