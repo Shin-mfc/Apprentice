@@ -42,7 +42,7 @@ FROM program_slots
 JOIN channels ON program_slots.channel_id = channels.channel_id
 JOIN episodes ON program_slots.episode_id = episodes.episode_id
 LEFT JOIN seasons ON episodes.season_id = seasons.season_id
-WHERE channels.channel_name = 'ドラマ'
+WHERE channels.channel_name = 'Drama'
 AND program_slots.start_time BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 7 DAY)
 ORDER BY program_slots.start_time;
 ```
